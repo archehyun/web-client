@@ -12,12 +12,18 @@ import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
 
+/**
+ * @author 박창현
+ *
+ */
 public class Main implements Runnable {
 
 	Thread thread;
+
 	URL url;
 
 	String urlString;
+
 	boolean flag = false;
 
 	private static String getStringFromInputStream(InputStream is) {
@@ -88,9 +94,8 @@ public class Main implements Runnable {
 		}
 	}
 
-
-
 	Random rn;
+
 	@Override
 	public void run() {
 

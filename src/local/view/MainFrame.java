@@ -11,11 +11,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import local.com.Main;
+import local.com.Senser;
+import local.com.impl.DummySenser;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-	Main main;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	Senser senser;
 
 	String url;
 
@@ -47,10 +53,9 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame(String url) {
 
 		this.url = url;
-		main = new Main(url);
+		senser = new DummySenser("pch", url);
 
 		this.getContentPane().add(buildMain());
-		//		this.setSize(new Dimension(200, 100));
 		this.setLocation(500, 200);
 		pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,19 +66,17 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		if (command.equals("Start")) {
-			main.start();
+			senser.start();
 			butStop.setEnabled(true);
 			butStart.setEnabled(false);
 		} else {
-			main.stop();
+			senser.stop();
 			butStop.setEnabled(false);
 			butStart.setEnabled(true);
 		}
 
 	}
 
-	public static void main(String[] args) {
-		new MainFrame(args[0]);
-	}
+
 
 }
